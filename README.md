@@ -54,7 +54,22 @@ Clone this repo and install dependencies:
 
 ```bash
 
-pip install pymisp python-dotenv
+---host---------
+
+install uv
+
+-------------
+
+uv init
+uv venv
+.venv\Scripts\activate
+uv add mcp[cli]
+uv add pymisp python-dotenv
+
+----------
+
+mcp dev server.py
+mcp install server.py
 
 
 
