@@ -27,28 +27,6 @@ except Exception as e:
 # --- TOOLS ---
 
 @mcp.tool()
-@mcp.tool()
-def misp_ping() -> dict:
-    """Check connectivity to the MISP server and return version info."""
-    if not misp:
-        return {"result": None, "text": "❌ MISP client not initialized"}
-    try:
-        # Try modern API call
-        try:
-            version = misp.get_api_version()
-        except AttributeError:
-            # Fallback for older PyMISP
-            version = misp.get("servers/getVersion.json").get("version", "unknown")
-
-        return {
-            "result": version,
-            "text": f"✅ Connected to MISP (version: {version})"
-        }
-    except Exception as e:
-        return {"result": None, "text": f"❌ Failed to connect: {e}"}
-
-
-@mcp.tool()
 def misp_search_events(value: str, limit: int = 5) -> dict:
     """Search events in MISP by value (e.g., domain, hash, IP)."""
     if not misp:
